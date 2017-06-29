@@ -1,0 +1,31 @@
+{
+	"name": "hypejunction/elgg-vue",
+	"type": "elgg-plugin",
+	"description": "Vue.js integration for Elgg",
+	"homepage": "http://hypejunction.com",
+	"keywords": [
+		"elgg",
+		"plugin",
+		"vue",
+		"front-end",
+		"js framework"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Ismayil Khayredinov",
+			"email": "info@hypejunction.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5",
+		"composer/installers": "~1.0",
+		"bower-asset/vue": "~2.3"
+	},
+	"autoload": {
+		"psr-0": {
+			"": "classes/"
+		}
+	}
+}
+
