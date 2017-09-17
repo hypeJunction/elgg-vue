@@ -1,0 +1,45 @@
+<div :data-guid="entity.guid" class="elgg-listing-summary">
+    <div class="elgg-listing-summary-header elgg-image-block media">
+        <div class="elgg-image media-left">
+            <div :title="entity.name" class="elgg-avatar elgg-avatar-small elgg-tooltip">
+                <a :href="entity.url" class="elgg-anchor">
+                    <span class="elgg-anchor-label">
+                        <img :src="entity._links.icons.small" :alt="entity.name" :title="entity.name">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="elgg-body media-content">
+            <div class="elgg-listing-summary-menu">
+                <div class="elgg-object-menu">
+                    <a href="javascript:void(0);" rel="nofollow" class="elgg-anchor elgg-object-menu-toggle"><span
+                            class="icon is-small "><i
+                            class="elgg-icon fa elgg-anchor-icon elgg-icon-chevron-down fa-chevron-down"></i></span><span
+                            class="elgg-anchor-label"></span></a>
+                    <div rel="4CIgZTgcWby6pfBn1ulkr0DLYK7LxYCslRq6WdUL2xg"
+                         data-elgg-menu-data="{&quot;g&quot;:71,&quot;pog&quot;:0,&quot;c&quot;:[&quot;members&quot;],&quot;m&quot;:&quot;4CIgZTgcWby6pfBn1ulkr0DLYK7LxYCslRq6WdUL2xg&quot;,&quot;i&quot;:[]}"
+                         class="elgg-module-popup elgg-object-menu-popup hidden is-loading">
+                        <div class="elgg-ajax-loader"></div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="elgg-listing-summary-title title is-3 is-spaced">
+                <a :href="entity.url" class="elgg-anchor">
+                    <span class="elgg-anchor-label">{{ entity.name }}</span>
+                </a>
+            </h3>
+            <div class="elgg-listing-summary-subtitle elgg-subtext">
+                <span class="icon is-small ">
+                    <i class="elgg-icon fa elgg-icon-map-marker fa-map-marker"></i></span>{{ entity.location }}
+            </div>
+        </div>
+    </div>
+    <div class="elgg-listing-summary-body">
+        <div class="elgg-listing-summary-content elgg-content clearfix">
+            <div class="elgg-listing-media-content">
+                {{ entity.description }}
+            </div>
+        </div>
+    </div>
+    <div class="elgg-listing-summary-footer"></div>
+</div>

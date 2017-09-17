@@ -1,0 +1,23 @@
+<div class="elgg-list-container">
+    <template v-if="loading">
+        <div class="elgg-ajax-loader"></div>
+    </template>
+    <template v-if="!count && !loading">
+        <p class="elgg-no-results"
+           v-if="noResultsText"
+           v-text="noResultsText"
+        ></p>
+    </template>
+    <template v-if="count">
+        <ul class="elgg-list"
+            :class="getListClass()">
+            <li v-for="item in items"
+                class="elgg-item"
+                :class="getItemClass(item)"
+                :id="getItemId(item)"
+            >
+                <component :is="getItemView(item)" :data-entity="item"></component>
+            </li>
+        </ul>
+    </template>
+</div>
