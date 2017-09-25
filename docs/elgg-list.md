@@ -14,9 +14,9 @@
 ```html
 <elgg-list
     data-source="/data/blog?owner_guid=32"
-    data-limit="10"
-    data-offset="0"
-    data-pagination="true"
+    :data-limit="10"
+    :data-offset="0"
+    :data-pagination="true"
     data-item-view="my-blog"
 ></elgg-list>
 ```

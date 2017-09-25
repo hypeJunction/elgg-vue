@@ -1,10 +1,31 @@
-<div class="elgg-field" :class="getFieldClass">
-    <label v-if="label" :for="id" class="elgg-field-label">
-        {{ label }}:
-        <span v-if="required" title="elgg.echo('required')" class="elgg-required-indicator">*</span>
+<elgg-field :class="fieldClass">
+    <label slot="label"
+           v-if="label"
+           :for="id"
+           class="label elgg-field-label"
+    >
+        {{ label }}
+        <span v-if="required" title="echo('field:required')" class="elgg-required-indicator">*</span>
     </label>
+
     <div class="control">
-        <input :value="value" type="text" :required="required" :name="name" :id="id" class="elgg-input-text">
+        <input v-model="value"
+               @input="onInput"
+               type="text"
+               :required="required"
+               :name="name"
+               :id="id"
+               :placeholder="placeholder"
+               class="input elgg-input-text"
+               :class="inputClass"
+        />
     </div>
-    <div v-if="help" class="elgg-field-help elgg-text-help">{{ help }}</div>
-</div>
+
+    <div slot="help"
+         v-if="help"
+         class="help elgg-field-help elgg-text-help"
+    >
+        {{ help }}
+    </div>
+
+</elgg-field>

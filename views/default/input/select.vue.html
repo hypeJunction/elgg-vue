@@ -1,0 +1,35 @@
+<elgg-field :class="fieldClass">
+    <label slot="label"
+           v-if="label"
+           :for="id"
+           class="label elgg-field-label"
+    >
+        {{ label }}
+        <span v-if="required" title="echo('field:required')" class="elgg-required-indicator">*</span>
+    </label>
+
+    <div class="control">
+        <div class="select" :class="inputClass">
+            <select v-model="value"
+                    @change="onChange"
+                    :required="required"
+                    :name="name"
+                    :id="id"
+                    class="elgg-input-select"
+            >
+                <option v-for="option in options"
+                        :value="option.value"
+                        :disabled="option.disabled"
+                        :selected="option.value === value">{{ option.label }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div slot="help"
+         v-if="help"
+         class="help elgg-field-help elgg-text-help"
+    >{{ help }}
+    </div>
+
+</elgg-field>

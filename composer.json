@@ -19,8 +19,7 @@
 	],
 	"require": {
 		"php": ">=5.5",
-		"composer/installers": "~1.0",
-		"bower-asset/vue": "~2.3"
+		"composer/installers": "~1.0"
 	},
 	"autoload": {
 		"psr-0": {

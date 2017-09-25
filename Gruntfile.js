@@ -42,7 +42,8 @@ module.exports = function (grunt) {
 					'!phpunit.xml',
 					'!Gruntfile.js',
 					'!Gemfile',
-					'!Gemfile.lock'
+					'!Gemfile.lock',
+					'!views/default/vue/main.js'
 				],
 				dest: 'build/',
 				expand: true

@@ -7,6 +7,15 @@
 * Bootstraps vue.js and allows plugins to register and load their components asynchronously
 * Provides some components mirroring the behavior of core Elgg elements
 
+## Debugging
+
+Add `environment` declaration to your `settings.php` (and flush caches):
+
+```php
+$CONFIG->environment = 'development';
+```
+
+This will enable Vue.js devtools and you can use Chrome extension to debug your Vue instances.
 
 ## Vue Components
 
@@ -15,6 +24,13 @@
 This plugins ships with a number of Vue components, which you can start using in your project.
 
 See `/docs/` directory for a list of components and usage examples.
+
+### Bundled Third-Party Components
+
+The plugin comes with some useful Vue components precompiled with webpack.
+
+* ***Multiselect*** https://monterail.github.io/vue-multiselect
+
 
 ### Global Components
 
@@ -73,4 +89,24 @@ define(function(require) {
 
 Included components are styled using bulma.io, which is not included in this plugin.
 You can either include the stylesheet into your theme, or use hypeUI.
+
+## Mixins
+
+The following `elgg.` methods are proxied via mixins and can be used in templates:
+
+* `echo()`
+
+Additional convienience methods:
+
+* `emit('event-name', {foo: 'bar'})` - will emit an event to parent component
+
+
+## Transitions
+
+The plugins uses Animated Vue plugin, so you can use any transitions components included therein:
+https://github.com/radical-dreamers/animated-vue
+
+You will need to add animate.css classes to your theme:
+https://github.com/daneden/animate.css
+
 

@@ -2,17 +2,21 @@ define(function(require) {
 
     var Vue = require('elgg/Vue');
 
-    var template = require('text!input/text.vue.html');
+    var template = require('text!input/select.vue.html');
 
-    Vue.component('elgg-input-text', {
+    Vue.component('elgg-input-select', {
         template: template,
         model: {
             prop: 'data-value',
-            event: 'input'
+            event: 'change'
         },
         props: {
             dataValue: {
 
+            },
+            dataOptions: {
+                type: Array,
+                required: true
             },
             dataName: {
                 type: String
@@ -42,7 +46,7 @@ define(function(require) {
         },
         data: function () {
             return {
-                value: this.dataValue || null,
+                value: this.dataValue,
                 name: this.dataName,
                 id: this.dataId || 'elgg-field-vue' + this._uid,
                 style: this.dataStyle,
@@ -54,6 +58,26 @@ define(function(require) {
             }
         },
         computed: {
+            options: function() {
+                var options = this.dataOptions;
+                options = options.map(function(option) {
+                    if (typeof option === 'string') {
+                        return {
+                            value: option,
+                            label: option
+                        };
+                    }
+                    return option;
+                });
+                if (this.placeholder) {
+                    options.unshift({
+                        disabled: true,
+                        label: this.placeholder,
+                        value: undefined
+                    });
+                }
+                return options;
+            },
             fieldClass: function() {
                 var styles = [];
                 if (this.required) {
@@ -74,8 +98,8 @@ define(function(require) {
             },
         },
         methods: {
-            onInput: function() {
-                this.$emit('input', this.value);
+            onChange: function() {
+                this.$emit('change', this.value);
             }
         },
         watch: {

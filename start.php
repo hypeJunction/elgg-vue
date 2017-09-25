@@ -12,12 +12,6 @@ require_once __DIR__ . '/autoloader.php';
 
 elgg_register_event_handler('init', 'system', function () {
 
-	$src = elgg_get_config('environment') == 'development' ? 'vue/vue.js' : 'vue/vue.min.js';
-	elgg_define_js('vue', [
-		'src' => elgg_get_simplecache_url($src),
-		'exports' => 'window.Vue',
-	]);
-
 	elgg_extend_view('elgg.js', 'vue/elgg.js');
 
 	elgg_register_plugin_hook_handler('view_vars', 'page/default', 'elgg_vue_mount');

@@ -12,11 +12,11 @@
 
 ```html
 <elgg-progressbar
-    data-value="0" 
-    data-max="100"
+    :data-value="0" 
+    :data-max="100"
     data-style="primary"
-    data-text=""
-    data-tooltip=""
+    :data-text="echo('text')"
+    :data-tooltip="echo('tooltip')"
 ></elgg-progressbar>
 ```
 
