@@ -1,0 +1,5 @@
+<span v-if="entity.tags" class="elgg-tags">
+    <span v-for="tag in entity.tags" class="elgg-tag tag is-light">
+        <elgg-anchor :text="tag.label" :href="tag.url"></elgg-anchor>
+    </span>
+</span>

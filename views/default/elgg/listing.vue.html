@@ -1,0 +1,71 @@
+<section
+        class="elgg-listing-container"
+        :class="containerClass"
+>
+
+    <div v-if="items" class="elgg-listing-controls">
+        <div class="columns">
+            <div class="column">
+                <elgg-input-text
+                        leftIcon="search"
+                        v-model="filter.query"
+                        @input="initSearch"
+                />
+            </div>
+
+            <slot class="column" name="controls"></slot>
+
+            <div class="column has-text-right">
+                <div class="field has-addons">
+                    <p v-if="listTypes.length > 1"
+                       v-for="listType in listTypes"
+                       class="control"
+                    >
+                        <elgg-button
+                                :color="currentListingType === listType ? 'primary' : ''"
+                                :disabled="currentListingType === listType"
+                                :icon="listing[listType].icon || defaultListTypeIcon(listType)"
+                                @click.prevent="toggleListType(listType)"
+                        />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="elgg-no-results"
+       v-if="!loading && !count && noResults"
+       v-text="noResultsText"
+    ></p>
+
+    <slot v-if="count" name="before"></slot>
+
+    <elgg-pagination
+            v-if="hasPagination('top')"
+            :count="count"
+            :limit="limit"
+            :offset="offset"
+            @navigate="navigate"
+    />
+
+    <animated-fade-in :duration="1" tag="div">
+        <component
+                v-if="items"
+                :is="listingComponent"
+                :items="items"
+                :options="listingComponentOptions"
+                v-model="selectedItems"
+        ></component>
+    </animated-fade-in>
+
+    <elgg-pagination
+            v-if="hasPagination('bottom')"
+            :count="count"
+            :limit="limit"
+            :offset="offset"
+            @navigate="navigate"
+    />
+
+    <slot v-if="count" name="after"></slot>
+
+</section>

@@ -1,0 +1,18 @@
+<li :class="itemClass">
+    <component v-if="item.component" :is="item.component" :item="item">{{ item.text }}</component>
+    <template v-if="!item.component">
+        <elgg-anchor
+            :href="item.href"
+            :title="item.title || ''"
+            :class="item.linkClass"
+            :icon="item.icon"
+            :badge="item.badge"
+            :text="item.text"
+        >
+            <slot></slot>
+        </elgg-anchor>
+        <ul v-if="item.children" class="elgg-child-menu">
+            <elgg-menu-item v-for="child in item.children" :item="child" :key="child.name"></elgg-menu-item>
+        </ul>
+    </template>
+</li>

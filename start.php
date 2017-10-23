@@ -13,6 +13,8 @@ require_once __DIR__ . '/autoloader.php';
 elgg_register_event_handler('init', 'system', function () {
 
 	elgg_extend_view('elgg.js', 'vue/elgg.js');
+	elgg_extend_view('elgg.css', 'vue/elgg.css');
+	elgg_extend_view('admin.css', 'vue/elgg.css');
 
 	elgg_register_plugin_hook_handler('view_vars', 'page/default', 'elgg_vue_mount');
 	elgg_register_plugin_hook_handler('view_vars', 'page/admin', 'elgg_vue_mount');

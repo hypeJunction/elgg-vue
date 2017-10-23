@@ -1,0 +1,6 @@
+<a :href="filteredHref" :title="filteredTitle" class="elgg-anchor" @click="onClick($event)">
+    <elgg-icon v-if="icon" :name="icon" class="elgg-anchor-icon"></elgg-icon>
+    <span v-if="text" v-html="filteredText" class="elgg-anchor-label"></span>
+    <span v-if="badge" v-text="badge" class="elgg-anchor-badge"></span>
+    <slot></slot>
+</a>

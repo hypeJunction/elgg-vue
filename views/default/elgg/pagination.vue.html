@@ -1,0 +1,15 @@
+<ul v-if="items" class="elgg-pagination">
+    <li v-for="item in items" :class="{
+        'elgg-state-disabled': item.disabled,
+        'elgg-state-selected': item.selected
+    }">
+        <elgg-anchor
+                v-if="!item.disabled && !item.selected"
+                @click.native.prevent="navigate(item.offset)"
+        >
+            <span>{{ item.text }}</span>
+        </elgg-anchor>
+
+        <span v-if="item.disabled || item.selected">{{ item.text }}</span>
+    </li>
+</ul>

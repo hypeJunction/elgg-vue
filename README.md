@@ -63,6 +63,24 @@ You can also use require text plugin to load the templates: `require('text!demo/
 
 You an use on-demand components like any other AMD module. You just need to ensure that the module is loaded before `init`, `system` hook is fired. 
 
+You can as well register async components:
+
+```js
+define(function (require) {
+
+    var Vue = require('elgg/Vue');
+    
+    Vue.component('vue-multiselect', function (resolve) {
+        // component will only be loaded if <vue-multiselect> is used in templates
+        require(['vue/vendors/Multiselect'], resolve);
+    });
+});
+```
+
+### Webpack and Laravel Mix
+
+There is currently no way to rely on global webpack configuration. You can see `package.json`, `webpack.config.js` and `webpack.mix.js` to figure out how to compile third-party Vue components into umd modules compatible with Elgg AMD loading. You can find an example in `src/vue/vendors/Dropzone.js`.
+
 ## Vue Application
 
 By default, the entire `body` of all HTML pages is wrapped in a vue container div, so you can just include your component tags anywhere in the views. This does not hold true, however, for views loaded via XHR (yet).
@@ -95,10 +113,6 @@ You can either include the stylesheet into your theme, or use hypeUI.
 The following `elgg.` methods are proxied via mixins and can be used in templates:
 
 * `echo()`
-
-Additional convienience methods:
-
-* `emit('event-name', {foo: 'bar'})` - will emit an event to parent component
 
 
 ## Transitions

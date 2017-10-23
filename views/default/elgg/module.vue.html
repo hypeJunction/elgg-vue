@@ -1,0 +1,11 @@
+<div class="elgg-module clearfix">
+    <div v-if="$slots.header" class="elgg-head">
+        <slot name="header"></slot>
+    </div>
+    <div class="elgg-body">
+        <slot></slot>
+    </div>
+    <div v-if="$slots.footer">
+        <slot name="footer" class="elgg-foot"></slot>
+    </div>
+</div>

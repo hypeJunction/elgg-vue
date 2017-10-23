@@ -1,0 +1,6 @@
+<div :title="entity.display_name" :class="wrapperClass">
+    <a :href="entity.url" :title="entity.display_name">
+        <img :src="iconUrl" :alt="entity.display_name" />
+    </a>
+    <slot></slot>
+</div>

@@ -1,0 +1,22 @@
+<div class="elgg-listing-summary-subtitle elgg-subtext">
+    <div class="elgg-listing-imprint">
+
+        <span v-if="entity.owner" class="elgg-listing-byline">
+             <span>{{ echo('byline:by') }}&nbsp;</span>
+             <elgg-entity-link :entity="entity.owner"></elgg-entity-link>
+        </span>
+
+
+        <elgg-time v-if="entity.time_created"
+                   :timestamp="entity.time_created"
+                   icon="history"
+                   class="elgg-listing-time"
+        ></elgg-time>
+
+        <span v-if="entity.access" class="elgg-listing-access">
+            <elgg-icon :name="entity.access.icon"></elgg-icon>
+            <span :title="echo('access:help')" class="elgg-access">{{ entity.access.label }}</span>
+        </span>
+
+    </div>
+</div>

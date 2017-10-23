@@ -1,0 +1,16 @@
+<div v-click-outside="close">
+    <a class="elgg-object-menu-toggle" @click.stop.prevent="toggle">
+        <slot name="trigger">
+            <elgg-icon name="chevron-down"/>
+        </slot>
+    </a>
+    <animated-fade-in :duration="1" tag="div">
+        <div v-if="isOpen" class="elgg-module-popup elgg-object-menu-popup" :style="inlineStyles">
+            <div v-if="loading" class="elgg-ajax-loader"></div>
+
+            <slot v-if="isLoaded"></slot>
+
+            <elgg-menu :sections="sections" name="entity"></elgg-menu>
+        </div>
+    </animated-fade-in>
+</div>

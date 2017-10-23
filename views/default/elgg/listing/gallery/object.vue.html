@@ -1,0 +1,41 @@
+<div class="elgg-listing-card card">
+    <div v-if="entity.media" class="elgg-listing-card-media card-image">
+        <elgg-media v-if="entity.media" :src="entity.media.src" :display="entity.media.display"/>
+    </div>
+
+    <div class="elgg-listing-card-body card-content">
+        <elgg-image-block class="elgg-listing-summary-header">
+            <elgg-entity-menu :entity="entity" class="elgg-listing-summary-menu"/>
+
+            <h3 v-if="entity.display_name" class="elgg-listing-summary-title title is-3 is-spaced">
+                <elgg-entity-link :entity="entity" :excerpt-length="60">
+                </elgg-entity-link>
+            </h3>
+
+            <elgg-entity-imprint :entity="entity"></elgg-entity-imprint>
+        </elgg-image-block>
+
+        <div class="elgg-listing-summary-body">
+            <div class="elgg-listing-summary-content elgg-content clearfix">
+                <div v-if="entity.summary" v-html="entity.summary" class="elgg-listing-media-content"></div>
+            </div>
+        </div>
+
+        <div class="elgg-listing-summary-footer">
+            <div class="elgg-listing-summary-metadata level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <elgg-entity-tags :entity="entity">
+                        </elgg-entity-tags>
+                    </div>
+                </div>
+
+                <div class="level-right">
+                    <div class="level-item">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,81 +1,26 @@
-var path = require('path')
-var webpack = require('webpack')
 
-module.exports = {
-    entry: './views/default/vue/main.js',
-    output: {
-        path: path.resolve(__dirname, './views/default/vue/'),
-        filename: 'webpack.js',
-        // This will allow us to use RequireJS to pull in this module
-        libraryTarget: 'umd',
-        library: 'vue'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-                        // the "scss" and "sass" values for the lang attribute to the right configs here.
-                        // other preprocessors should work out of the box, no loader config like this necessary.
-                        'scss': 'vue-style-loader!css-loader!sass-loader',
-                        'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-                    }
-                    // other vue-loader options go here
-                }
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }
-        ]
-    },
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.common.js'
-        }
-    },
-    devServer: {
-        historyApiFallback: true,
-        noInfo: true
-    },
-    performance: {
-        hints: false
-    },
-    devtool: '#eval-source-map'
-}
+/**
+ * As our first step, we'll pull in the user's webpack.mix.js
+ * file. Based on what the user requests in that file,
+ * a generic config object will be constructed for us.
+ */
 
-if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map'
-    // http://vue-loader.vuejs.org/en/workflow/production.html
-    module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"development"'
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        })
-    ])
-}
+require('./node_modules/laravel-mix/src/index');
+require(Mix.paths.mix());
+
+/**
+ * Just in case the user needs to hook into this point
+ * in the build process, we'll make an announcement.
+ */
+
+Mix.dispatch('init', Mix);
+
+/**
+ * Now that we know which build tasks are required by the
+ * user, we can dynamically create a configuration object
+ * for Webpack. And that's all there is to it. Simple!
+ */
+
+let WebpackConfig = require('./node_modules/laravel-mix/src/builder/WebpackConfig');
+
+module.exports = new WebpackConfig().build();

@@ -1,0 +1,9 @@
+<elgg-table
+    :rows="items"
+    :columns="columns"
+    :class="tableClass"
+    :selectable="options.selectable || false"
+    :inputName="options.inputName"
+    inputProp="guid"
+    v-model="selectedItems"
+></elgg-table>

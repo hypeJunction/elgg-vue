@@ -1,0 +1,13 @@
+<div class="elgg-media-card" :data-provider="metadata.provider">
+    <elgg-image-block>
+        <elgg-media-image :metadata="metadata" slot="image"></elgg-media-image>
+        <h3>
+            <elgg-anchor :text="metadata.title" :href="metadata.url" target="_blank"></elgg-anchor>
+        </h3>
+        <div class="elgg-text-help">
+            <elgg-anchor :text="hostname" :href="metadata.url" target="_blank"></elgg-anchor>
+        </div>
+        <p v-if="excerpt" class="elgg-output">{{ excerpt }}</p>
+    </elgg-image-block>
+
+</div>

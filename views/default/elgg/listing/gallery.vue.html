@@ -1,0 +1,15 @@
+<ul v-if="items"
+    class="elgg-gallery"
+    :class="galleryClass">
+
+    <li v-for="(item, index) in items"
+        class="elgg-item"
+        :class="itemClass(item)"
+        :id="itemId(item)"
+        :key="index"
+        @click="toggleSelected(item)"
+    >
+        <input v-if="options.inputName" class="hidden" type="checkbox" :name="options.inputName" :value="item.guid" :checked="isSelected(item)"/>
+        <elgg-component :component="itemComponent(item)" :props="{entity: 'data'}" :data="item"></elgg-component>
+    </li>
+</ul>

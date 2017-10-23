@@ -1,0 +1,5 @@
+<nav>
+    <ul v-for="(items, section) in sections" class="elgg-menu" :class="sectionClass(section)" :key="section">
+        <elgg-menu-item v-for="item in items" :item="item" :key="item.name"></elgg-menu-item>
+    </ul>
+</nav>

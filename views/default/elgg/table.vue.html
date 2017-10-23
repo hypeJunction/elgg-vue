@@ -1,0 +1,36 @@
+<table class="elgg-table table">
+    <thead>
+    <tr>
+        <th v-if="inputName || selectable">
+            <input
+                    type="checkbox"
+                    v-model="allToggledOnPage"
+                    @change="toggleAll"
+            />
+            <span v-if="selectedItems.length" class="elgg-badge">{{ selectedItems.length }}</span>
+        </th>
+        <th v-for="column in columns" v-text="column.heading"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+            v-for="row in rows"
+            :class="rowClass(row)"
+    >
+        <td v-if="inputName || selectable">
+            <input
+                    v-if="inputName || selectable"
+                    type="checkbox"
+                    :name="inputName"
+                    :value="inputValue(row)"
+                    :checked="isSelected(row)"
+                    @change="toggleSelected(row)"
+            />
+        </td>
+        <td v-for="column in columns" class="elgg-table-cell" :data-heading="column.heading">
+            <elgg-component :component="column.component" :props="column.props" :data="row" :html="column.html">
+            </elgg-component>
+        </td>
+    </tr>
+    </tbody>
+</table>

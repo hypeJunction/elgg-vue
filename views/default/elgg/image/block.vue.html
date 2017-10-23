@@ -1,0 +1,15 @@
+<div class="elgg-image-block media">
+    <div v-if="$slots.image"
+         class="elgg-image media-left"
+    >
+        <slot name="image"></slot>
+    </div>
+    <div v-if="$slots.image_alt"
+         class="elgg-image media-right"
+    >
+        <slot name="image_alt"></slot>
+    </div>
+    <div class="elgg-body media-content">
+        <slot></slot>
+    </div>
+</div>
