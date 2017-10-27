@@ -7,9 +7,10 @@
                     v-model="allToggledOnPage"
                     @change="toggleAll"
             />
-            <span v-if="selectedItems.length" class="elgg-badge">{{ selectedItems.length }}</span>
         </th>
-        <th v-for="column in columns" v-text="column.heading"></th>
+        <th v-for="column in columns">
+            {{ getColumnHeading(column) }}
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -27,9 +28,8 @@
                     @change="toggleSelected(row)"
             />
         </td>
-        <td v-for="column in columns" class="elgg-table-cell" :data-heading="column.heading">
-            <elgg-component :component="column.component" :props="column.props" :data="row" :html="column.html">
-            </elgg-component>
+        <td v-for="column in columns" class="elgg-table-cell">
+            <elgg-component v-bind="getColumnComponentProps(column, row)"></elgg-component>
         </td>
     </tr>
     </tbody>

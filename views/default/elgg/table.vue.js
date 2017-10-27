@@ -105,6 +105,21 @@ define(function (require) {
                         }
                     });
                 }
+            },
+            getColumnHeading: function(column) {
+                if (typeof column.heading === 'undefined' && column.name) {
+                    return this.echo('column:' + column.name);
+                }
+                return column.heading;
+            },
+            getColumnComponentProps: function(column, row) {
+                return {
+                    data: row,
+                    component: column.component || 'div',
+                    props: column.props || {},
+                    name: column.name,
+                    html: column.html
+                }
             }
         },
         watch: {

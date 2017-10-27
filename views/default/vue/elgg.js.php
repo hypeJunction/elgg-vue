@@ -73,13 +73,13 @@ foreach ($views as $view) {
 	$amd_name = $get_amd_name($view);
 	$deps[] = $amd_name;
 
-	if (elgg_get_config('environment') !== 'development') {
+	//if (elgg_get_config('environment') !== 'development') {
 		$content = elgg_view($view);
 		$content = $filter($view, $content);
 		$content = $inline_html($content);
 
 		echo $content . ";\n";
-	}
+	//}
 }
 
 ?>

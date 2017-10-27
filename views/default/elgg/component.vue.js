@@ -24,6 +24,9 @@ define(function (require) {
                     return {};
                 }
             },
+            name: {
+                type: String
+            },
             html: {
                 default: ''
             },
@@ -48,6 +51,9 @@ define(function (require) {
             },
             filteredHtml: function () {
                 if (!this.html) {
+                    if (typeof this.name === 'string') {
+                        return this.getValueFromDotNotation(this.data, this.name);
+                    }
                     return;
                 }
                 if (typeof this.html === 'function') {

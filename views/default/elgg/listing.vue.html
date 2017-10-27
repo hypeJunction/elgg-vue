@@ -58,6 +58,8 @@
         ></component>
     </animated-fade-in>
 
+    <span v-if="selectedItems.length">{{ echo('listing:items:selected', [selectedItems.length]) }}</span>
+
     <elgg-pagination
             v-if="hasPagination('bottom')"
             :count="count"

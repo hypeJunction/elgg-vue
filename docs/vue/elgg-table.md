@@ -2,7 +2,7 @@
 
 ## Custom Props
 
-* `rows` - An of objects to use as rows
+* `rows` - An array of objects to use as rows
 * `columns` - An array of column properties
 
 ## Usage
@@ -14,10 +14,12 @@
     }, {}]"
     <!-- 
     each column is rendered using <elgg-component> component,
-    so you can pass the props accordingly, where as data is the current row 
+    so you can pass the props accordingly, where 'data' is the current row
+    The function call below is for illustrative purposes only,
+    you can't use it in XML bindings 
      -->
     :columns="[{  
-        heading: '',
+        heading: 'Column as component with props mapping',
         component: 'custom-cell-component',
         props: {
            first_name: 'data.first_name',
@@ -26,11 +28,14 @@
         },
     },
     {
-        heading: 'Name',
+        heading: 'Column as component with html',
         html: function(row) {
-           return '<div>' + row.name + '</div>',
-        }
-    }]"
+           return '<div>' + row.foo + '</div>',
+        },
+    },
+        heading: 'Column as object prop',
+        name: 'foo'
+    ]"
     
      <!-- automatically bind item selection -->
      v-model="guids"

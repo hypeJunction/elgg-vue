@@ -9,6 +9,7 @@ Magic component builder
 |`component`|   |Component name, e.g. `elgg-entity-icon`|
 |`props`|   |An object representing mapping of component properties. Allows you to map `data` object properties to component properties, using closures or dot.notations. |
 |`data`|   |Data object|
+|`name`|   |Property name in data object, e.g. `name` will map to `data.name`|
 |`html`|   |Row HTML content of the component (closure or string)|
 
 ## Usage
