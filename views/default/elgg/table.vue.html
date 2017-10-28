@@ -8,8 +8,11 @@
                     @change="toggleAll"
             />
         </th>
-        <th v-for="column in columns">
-            {{ getColumnHeading(column) }}
+        <th v-for="column in columns" @click="sortByColumn(column)" :class="getSortClass(column)">
+            <span>{{ getColumnHeading(column) }}</span>
+            <a v-if="column.sort">
+                <elgg-icon v-if="column.sort" :name="getSortIcon(column)"></elgg-icon>
+            </a>
         </th>
     </tr>
     </thead>

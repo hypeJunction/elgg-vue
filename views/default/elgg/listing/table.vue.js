@@ -35,7 +35,11 @@ define(function (require) {
                 selectedItems: this.selected,
             }
         },
-        methods: {},
+        methods: {
+            sort: function(key, direction) {
+                this.$emit('sort', key, direction);
+            }
+        },
         computed: {
             columns: function() {
                 if (this.options.columns) {

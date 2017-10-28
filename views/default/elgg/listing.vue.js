@@ -95,6 +95,7 @@ define(function (require) {
                 offset: this.options.offset || 0,
                 currentListingType: this.listingType,
                 selectedItems: this.selected,
+                listFilter: this.filter,
             }
         },
         created: function () {
@@ -103,7 +104,7 @@ define(function (require) {
         methods: {
             load: helpers.debounce(function () {
                 var self = this;
-                var data = $.extend({}, self.filter, self.options);
+                var data = $.extend({}, self.listFilter, self.options);
 
                 $('html,body').animate({
                     scrollTop: self.$el.offsetTop
@@ -122,7 +123,7 @@ define(function (require) {
 
                     self.loading = false;
                 });
-            }, 1000),
+            }, 500),
             hasPagination: function (position) {
                 if (!this.pagination.display) {
                     return false;
@@ -162,6 +163,11 @@ define(function (require) {
                         return 'table';
                 }
             },
+            sort: function(key, direction) {
+                this.listFilter.sort = key + '::' + direction;
+                this.load();
+                this.$emit('sorted', key, direction);
+            }
         },
         computed: {
             listTypes: function () {
@@ -203,6 +209,12 @@ define(function (require) {
             selected: function (value) {
                 this.selectedItems = value;
                 this.$emit('select', this.selectedItems);
+            },
+            filter: {
+                handler: function(value) {
+                    this.listFilter = value;
+                },
+                deep: true
             }
         }
     });

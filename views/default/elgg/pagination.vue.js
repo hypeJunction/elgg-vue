@@ -56,7 +56,7 @@ define(function (require) {
             items: function() {
                 var items = [];
 
-                if (this.totalPages < 1) {
+                if (this.totalPages <= 1) {
                     return items;
                 }
 

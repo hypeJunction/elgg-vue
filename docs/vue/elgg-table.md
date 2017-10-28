@@ -16,7 +16,8 @@
     each column is rendered using <elgg-component> component,
     so you can pass the props accordingly, where 'data' is the current row
     The function call below is for illustrative purposes only,
-    you can't use it in XML bindings 
+    you can't use it in XML bindings
+    Adding a sort key will emit a @sort(key, direction) event 
      -->
     :columns="[{  
         heading: 'Column as component with props mapping',
@@ -26,6 +27,7 @@
            child: 'data',
            parent: 'data.parent'
         },
+        sort: 'key',
     },
     {
         heading: 'Column as component with html',

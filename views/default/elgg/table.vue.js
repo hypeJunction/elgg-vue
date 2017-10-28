@@ -45,7 +45,8 @@ define(function (require) {
         data: function () {
             return {
                 selectedItems: this.selected,
-                allToggledOnPage: false
+                allToggledOnPage: false,
+                sort: {}
             }
         },
         computed: {
@@ -119,6 +120,44 @@ define(function (require) {
                     props: column.props || {},
                     name: column.name,
                     html: column.html
+                }
+            },
+            sortByColumn: function(column) {
+                if (!column.sort) {
+                    return;
+                }
+
+                var direction = 'asc';
+                if (column.sort === this.sort.key) {
+                    direction = this.sort.direction === 'asc' ? 'desc' : 'asc';
+                }
+
+                this.sort = {
+                    key: column.sort,
+                    direction: direction
+                };
+
+                this.$emit('sort', column.sort, direction);
+            },
+            getSortClass: function(column) {
+                if (!column.sort) {
+                    return 'elgg-column-unsortable';
+                }
+
+                if (column.sort === this.sort.key) {
+                    return 'elgg-column-sorted';
+                } else {
+                    return 'elgg-column-sortable';
+                }
+            },
+            getSortIcon: function(column) {
+                if (!column.sort) {
+                    return;
+                }
+                if (column.sort === this.sort.key) {
+                    return this.sort.direction === 'asc' ? 'sort-asc' : 'sort-desc';
+                } else {
+                    return 'sort';
                 }
             }
         },
