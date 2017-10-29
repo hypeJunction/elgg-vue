@@ -1,7 +1,5 @@
 # `<elgg-lightbox>`
 
-Magic component builder
-
 ## Props
 
 |Property      |Type          |Defaut        |Required      |Description                          |

@@ -20,31 +20,28 @@ define(function (require) {
                 isLoaded: false,
                 loading: false,
                 sections: {},
-                inlineStyles: {}
+                position: {
+                    attachment: 'top right',
+                    targetAttachment: 'bottom right'
+                },
+                hash: Math.random()
             }
         },
-        computed: {},
         methods: {
-            close: function() {
-                if (this.isOpen) {
-                    this.isOpen = false;
-                    this.$emit('close', this);
-                }
+            rehash: function() {
+                this.hash = Math.random();
             },
-            open: function() {
-                this.inlineStyles.right = '0';
-                this.inlineStyles.left = 'auto';
-                this.inlineStyles.top = (this.$el.offsetTop + this.$el.offsetHeight) + 'px';
-                this.inlineStyles.left = (this.$el.offsetLeft) + 'px';
-
-                /** @todo: add collision logic */
-
+            close: function () {
+                this.isOpen = false;
+                this.$emit('close', this);
+            },
+            open: function () {
                 this.isOpen = true;
-                this.$emit('open', this);
-
                 if (!this.isLoaded) {
                     this.load();
                 }
+                this.$emit('open', this);
+                this.rehash();
             },
             toggle: function () {
                 this.isOpen ? this.close() : this.open();
@@ -72,6 +69,9 @@ define(function (require) {
                     }
                     self.loading = false;
                     self.isLoaded = true;
+
+                    self.rehash();
+                    self.$emit('load', self);
                 });
             }
         }

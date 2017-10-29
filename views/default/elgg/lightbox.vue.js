@@ -73,8 +73,6 @@ define(function (require) {
         watch: {
             open: function (value) {
                 this.isOpen = value;
-            },
-            isOpen: function (value) {
                 value ? this.show() : this.hide()
             },
             options: {
