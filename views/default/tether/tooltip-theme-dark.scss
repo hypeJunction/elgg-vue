@@ -1,0 +1,13 @@
+@import "../variables";
+@import "helpers/tether";
+@import "helpers/tether-theme-arrows";
+
+$themePrefix: "tooltip";
+$themeName: "dark";
+$arrowSize: 8px;
+$tooltip-background-tooltip-text-color: $primary !default;
+$tooltip-text-color: #fff !default;
+$tooltip-use-drop-shadow: true !default;
+
+@include tether($themePrefix: $themePrefix);
+@include tether-theme-arrows($themePrefix: $themePrefix, $themeName: $themeName, $arrowSize: $arrowSize, $backgroundColor: $tooltip-background-tooltip-text-color, $color: $tooltip-text-color, $useDropShadow: $tooltip-use-drop-shadow);

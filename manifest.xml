@@ -25,5 +25,10 @@
 		<type>plugin</type>
 		<name>elgg-data</name>
 	</requires>
-	
+
+	<requires>
+		<type>plugin</type>
+		<name>elgg-scss</name>
+	</requires>
+
 </plugin_manifest>

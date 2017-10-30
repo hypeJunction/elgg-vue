@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Tether from 'tether'
+import Tooltip from 'tether-tooltip'
 
 import VueCarousel from 'vue-carousel'
 import AnimatedVue from 'animated-vue';
@@ -34,3 +35,4 @@ Vue.directive('click-outside', {
 window.Vue = Vue;
 window.Vuex = Vuex;
 window.Tether = Tether;
+window.Tooltip = Tooltip;
