@@ -20,7 +20,7 @@
                 <option v-for="option in filteredOptions"
                         :value="option.value"
                         :disabled="option.disabled"
-                        :selected="option.value === value">{{ option.label }}
+                        :selected="option.selected">{{ option.label }}
                 </option>
             </select>
         </div>

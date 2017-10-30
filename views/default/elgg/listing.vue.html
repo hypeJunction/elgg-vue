@@ -3,39 +3,37 @@
         :class="containerClass"
 >
 
-    <div v-if="items" class="elgg-listing-controls">
-        <div class="columns">
-            <div class="column">
-                <elgg-input-text
-                        leftIcon="search"
-                        v-model="filter.query"
-                        @input="initSearch"
-                />
-            </div>
+    <div class="elgg-listing-controls">
+        <elgg-input-text
+                leftIcon="search"
+                v-model="filter.query"
+                :loading="isSearchingByText"
+                @input="initSearch"
+                class="is-inline-block"
+        />
 
-            <slot class="column" name="controls"></slot>
+        <slot name="controls"></slot>
 
-            <div class="column has-text-right">
-                <div class="field has-addons">
-                    <p v-if="listTypes.length > 1"
-                       v-for="listType in listTypes"
-                       class="control"
-                    >
-                        <elgg-button
-                                :color="currentListingType === listType ? 'primary' : ''"
-                                :disabled="currentListingType === listType"
-                                :icon="listing[listType].icon || defaultListTypeIcon(listType)"
-                                @click.prevent="toggleListType(listType)"
-                        />
-                    </p>
-                </div>
+        <div class="is-inline-block">
+            <div class="field has-addons">
+                <p v-if="listTypes.length > 1"
+                   v-for="listType in listTypes"
+                   class="control"
+                >
+                    <elgg-button
+                            :color="currentListingType === listType ? 'primary' : ''"
+                            :disabled="currentListingType === listType"
+                            :icon="listing[listType].icon || defaultListTypeIcon(listType)"
+                            @click.prevent="toggleListType(listType)"
+                    />
+                </p>
             </div>
         </div>
     </div>
 
     <p class="elgg-no-results"
        v-if="!loading && !count && noResults"
-       v-text="noResultsText"
+       v-text="noResults"
     ></p>
 
     <slot v-if="count" name="before"></slot>

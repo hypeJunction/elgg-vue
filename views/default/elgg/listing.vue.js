@@ -96,15 +96,24 @@ define(function (require) {
                 currentListingType: this.listingType,
                 selectedItems: this.selected,
                 listFilter: this.filter,
+                isSearchingByText: false,
             }
         },
-        created: function () {
+
+        mounted: function () {
             this.load();
         },
         methods: {
-            load: helpers.debounce(function () {
+            load: function () {
                 var self = this;
+
                 var data = $.extend({}, self.listFilter, self.options);
+
+                for (name in data.metadata) {
+                    if (data.metadata[name] === null) {
+                        delete data.metadata[name];
+                    }
+                }
 
                 $('html,body').animate({
                     scrollTop: self.$el.offsetTop
@@ -112,7 +121,7 @@ define(function (require) {
 
                 self.loading = true;
 
-                self.$store.dispatch('getEntities', {
+                return self.$store.dispatch('getEntities', {
                     baseUrl: self.baseUrl,
                     data: data
                 }).then(function (list) {
@@ -123,7 +132,7 @@ define(function (require) {
 
                     self.loading = false;
                 });
-            }, 500),
+            },
             hasPagination: function (position) {
                 if (!this.pagination.display) {
                     return false;
@@ -135,11 +144,15 @@ define(function (require) {
                     return true;
                 }
             },
-            initSearch: function (value) {
+            initSearch: helpers.debounce(function (value) {
                 this.options.offset = 0;
-                this.load();
+                this.isSearchingByText = true;
+                var self = this;
+                this.load().then(function() {
+                    self.isSearchingByText = false;
+                });
                 this.$emit('search', this);
-            },
+            }, 500),
             toggleListType: function (listingType) {
                 this.currentListingType = listingType;
                 this.$emit('list-type-toggle', this);
@@ -200,7 +213,7 @@ define(function (require) {
                 options.inputName = this.inputName;
 
                 return options;
-            }
+            },
         },
         watch: {
             listingType: function (value) {
@@ -213,6 +226,12 @@ define(function (require) {
             filter: {
                 handler: function(value) {
                     this.listFilter = value;
+                },
+                deep: true
+            },
+            listFilter: {
+                handler: function() {
+                    this.load();
                 },
                 deep: true
             }

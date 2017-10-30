@@ -49,26 +49,29 @@ define(function(require) {
         },
         data: function() {
             return {
-                inputValue: this.value
+                inputValue: typeof this.value !== 'undefined' ? this.value : null,
             }
         },
         computed: {
             filteredOptions: function() {
+                var self = this;
                 var options = this.options;
                 options = options.map(function(option) {
                     if (typeof option === 'string') {
                         return {
                             value: option,
-                            label: option
+                            label: option,
+                            selected: self.inputValue === option,
                         };
                     }
+                    option.selected = self.inputValue === option.value
                     return option;
                 });
                 if (this.placeholder) {
                     options.unshift({
                         disabled: true,
                         label: this.placeholder,
-                        value: undefined
+                        selected: typeof this.inputValue === 'undefined' || this.inputValue === null
                     });
                 }
                 return options;
