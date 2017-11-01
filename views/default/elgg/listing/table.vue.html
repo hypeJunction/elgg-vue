@@ -5,7 +5,8 @@
         :class="tableClass"
         :selectable="options.selectable || false"
         :inputName="options.inputName"
+        :sort="sort"
         inputProp="guid"
         v-model="selectedItems"
-        @sort="sort"
+        @sort="sortListing"
 ></elgg-table>

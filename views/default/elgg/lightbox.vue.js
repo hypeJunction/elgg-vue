@@ -19,12 +19,12 @@ define(function (require) {
                 default: function () {
                     return {};
                 }
-            }
+            },
+            contentClass: {}
         },
         data: function () {
             return {
                 isOpen: false,
-                el: null,
                 lightboxOptions: this.options,
                 id: 'elgg-lightbox-' + this._uid,
             }
@@ -50,9 +50,8 @@ define(function (require) {
                         self.$emit('cleanup', self);
                     },
                     onClosed: function () {
+                        self.$emit('close', self);
                         self.isOpen = false;
-                        self.$emit('closed');
-                        self.el = null;
                     }
                 });
 
@@ -61,10 +60,10 @@ define(function (require) {
                     opts.inline = true;
                 }
 
-                this.el = lightbox.open(opts)
+                lightbox.open(opts)
             },
             hide: function () {
-                this.isOpen = false;
+                lightbox.close();
             }
         },
         mounted: function () {

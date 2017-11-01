@@ -33,10 +33,11 @@ define(function (require) {
         data: function() {
             return {
                 selectedItems: this.selected,
+                sort: this.options.sort,
             }
         },
         methods: {
-            sort: function(key, direction) {
+            sortListing: function(key, direction) {
                 this.$emit('sort', key, direction);
             }
         },

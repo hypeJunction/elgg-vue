@@ -2,10 +2,11 @@
 
 ## Props
 
-|Property      |Type          |Defaut        |Required      |Description                          |
-|--------------|--------------|--------------|--------------|-------------------------------------|
-|`:open`        |Boolean      |`false`       |no            |Open status                          |
-|`:options`     |Object       |`{}`          |no            |Colorbox options                     |
+|Property       |Type           |Defaut        |Required      |Description                          |
+|---------------|---------------|--------------|--------------|-------------------------------------|
+|`:open`        |Boolean        |`false`       |no            |Open status                          |
+|`:options`     |Object         |`{}`          |no            |Colorbox options                     |
+|`:contentClass`|Object, String |`{}`          |no            |Class selector of the rendered lightbox content|
 
 ## Events
 

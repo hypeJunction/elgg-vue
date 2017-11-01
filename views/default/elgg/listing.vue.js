@@ -211,6 +211,18 @@ define(function (require) {
 
                 options.selectable = this.selectable;
                 options.inputName = this.inputName;
+                if (this.listFilter.sort) {
+                    sort = this.listFilter.sort.split('::');
+                    options.sort = {
+                        key: sort[0],
+                        direction: sort[1]
+                    }
+                } else {
+                    options.sort = {
+                        key: '',
+                        direction: ''
+                    }
+                }
 
                 return options;
             },

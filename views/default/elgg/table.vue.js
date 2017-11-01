@@ -40,13 +40,15 @@ define(function (require) {
                 default: function () {
                     return [];
                 }
+            },
+            sort: {
+                type: Object
             }
         },
         data: function () {
             return {
                 selectedItems: this.selected,
                 allToggledOnPage: false,
-                sort: {}
             }
         },
         computed: {

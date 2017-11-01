@@ -1,12 +1,12 @@
-# `<elgg-input-text>`
+# `<elgg-input-contenteditable>`
 
 See `elgg-input` docs for a full list of props
 
 ## Props
 
-|Property      |Type          |Default       |Required      |Description                                                    |
-|--------------|--------------|--------------|--------------|---------------------------------------------------------------|
-|              |              |              |              |                                                               |
+|Property      |Type          |Default        |Required      |Description                                               |
+|--------------|--------------|--------------|--------------|-----------------------------------------------------------|
+|`component`   |String        |`div`         |no            |Component name to use for `contenteditable`                |
 
 ## Events
 
@@ -23,7 +23,7 @@ See `elgg-input` docs for a full list of props
 ## Example
 
 ```html
-<elgg-input-text
+<elgg-input-contenteditable
     v-model="parent.value"
     @input="doSomething"
 />

@@ -5,6 +5,7 @@ define(function (require) {
 
     Vue.component('elgg-field', {
         template: template,
+        props: ['id', 'label', 'help', 'required']
     });
 
 });

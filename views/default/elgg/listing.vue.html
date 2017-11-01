@@ -57,7 +57,7 @@
         ></component>
     </animated-fade-in>
 
-    <span v-if="selectedItems.length">{{ echo('listing:items:selected', [selectedItems.length]) }}</span>
+    <slot name="footer-controls"></slot>
 
     <elgg-pagination
             v-if="hasPagination('bottom')"

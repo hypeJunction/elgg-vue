@@ -234,7 +234,9 @@ define('elgg/VueDatabase', ['elgg', 'elgg/Ajax', 'elgg/Vue'], function (elgg, Aj
                 return e.guid === payload.entity.guid;
             });
             if (index >= 0) {
-                Vue.set(store.entities, index, payload.entity);
+                for (i in payload.entity) {
+                    Vue.set(store.entities[index], i, payload.entity[i]);
+                }
             } else {
                 store.entities.push(payload.entity);
             }
