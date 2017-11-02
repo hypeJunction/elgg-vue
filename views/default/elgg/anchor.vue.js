@@ -82,10 +82,8 @@ define(function (require) {
                 if (confirmation === true) {
                     confirmation = this.echo('question:areyousure');
                 }
-                if (!confirmation) {
-                    return;
-                }
-                if (!confirm(confirmation)) {
+
+                if (confirmation && !confirm(confirmation)) {
                     event.preventDefault();
                     event.stopPropagation();
                     return;

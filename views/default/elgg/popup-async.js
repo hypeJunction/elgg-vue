@@ -17,8 +17,7 @@ define(function (require) {
                         targetAttachment: 'bottom center'
                     }
                 }
-            },
-            hash: {}
+            }
         },
         data: function () {
             return {
@@ -31,6 +30,7 @@ define(function (require) {
             show: function () {
                 this.isOpen = true;
                 this.$emit('open', this);
+                this.position();
             },
             hide: function () {
                 this.isOpen = false;

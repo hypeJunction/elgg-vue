@@ -74,11 +74,11 @@ foreach ($views as $view) {
 	$deps[] = $amd_name;
 
 	//if (elgg_get_config('environment') !== 'development') {
-		$content = elgg_view($view);
-		$content = $filter($view, $content);
-		$content = $inline_html($content);
+	$content = elgg_view($view);
+	$content = $filter($view, $content);
+	$content = $inline_html($content);
 
-		echo $content . ";\n";
+	echo $content . ";\n";
 	//}
 }
 
@@ -110,7 +110,7 @@ define('elgg/VueHelpers', ['elgg'], function (elgg) {
             return notation.split(".").reduce(function (o, x) {
                 return o[x]
             }, object);
-        }
+        },
     }
 });
 
@@ -512,4 +512,47 @@ define('elgg/VueStorage', ['elgg', 'elgg/VueDatabase', 'elgg/VuePage'], function
 
 require(['elgg/Vue', 'elgg/VueComponents'], function (Vue) {
     Vue.config.devtools = <?= json_encode((elgg_get_config('environment') === 'development')) ?>;
+});
+
+
+// add support for FormData
+require(['elgg', 'jquery'], function (elgg, $) {
+
+    elgg.register_hook_handler('ajax_request_data', 'all', function (hook, type, params, data) {
+        if (!data.__files || !data.__files.length) {
+            return data;
+        }
+
+        var files = data.__files;
+
+        delete data.__files;
+
+        fd = new FormData();
+
+        files.forEach(function (e) {
+            fd.append(e.input, e.file, e.name);
+        });
+
+        appendFormdata(fd, data);
+
+        console.log(fd);
+
+        return fd;
+    }, 999);
+
+    function appendFormdata(FormData, data, name){
+        name = name || '';
+        if (typeof data === 'object'){
+            $.each(data, function(index, value){
+                if (name == ''){
+                    appendFormdata(FormData, value, index);
+                } else {
+                    appendFormdata(FormData, value, name + '['+index+']');
+                }
+            })
+        } else {
+            FormData.append(name, data);
+        }
+    }
+
 });
