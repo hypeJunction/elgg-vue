@@ -110,7 +110,7 @@ define('elgg/VueHelpers', ['elgg'], function (elgg) {
             return notation.split(".").reduce(function (o, x) {
                 return o[x]
             }, object);
-        },
+        }
     }
 });
 
@@ -118,7 +118,7 @@ define('elgg/VuePlugin', ['elgg/VueHelpers'], function (VueHelpers) {
     var VuePlugin = {
         install: function (Vue) {
             Vue.mixin({
-                methods: VueHelpers
+                methods: VueHelpers,
             });
         }
     };
@@ -519,7 +519,7 @@ require(['elgg/Vue', 'elgg/VueComponents'], function (Vue) {
 require(['elgg', 'jquery'], function (elgg, $) {
 
     elgg.register_hook_handler('ajax_request_data', 'all', function (hook, type, params, data) {
-        if (!data.__files || !data.__files.length) {
+        if (!data.__files || data.__files.length === 0) {
             return data;
         }
 

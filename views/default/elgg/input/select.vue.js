@@ -23,22 +23,30 @@ define(function(require) {
                         return {
                             value: option,
                             label: option,
-                            selected: self.inputValue === option,
                         };
                     }
-                    option.selected = self.inputValue === option.value
                     return option;
                 });
                 if (this.placeholder) {
                     options.unshift({
                         disabled: true,
                         label: this.placeholder,
-                        selected: typeof this.inputValue === 'undefined' || this.inputValue === null
+                        placeholder: true,
+                        value: null
                     });
                 }
+
+                options.forEach(function(option) {
+                    if (typeof self.inputValue === 'undefined') {
+                        option.selected = option.placeholder === true;
+                    } else {
+                        option.selected = self.inputValue === option.value
+                    }
+                });
+
                 return options;
             },
-        }
+        },
     });
 
 });

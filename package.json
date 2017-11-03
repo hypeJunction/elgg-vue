@@ -28,7 +28,8 @@
         "grunt-version": "^1.0.0",
         "laravel-mix": "^1.5.1",
         "path": "^0.12.7",
-        "underscore": "^1.8.3"
+        "underscore": "^1.8.3",
+        "vue-event-bus": "^1.0.2"
     },
     "scripts": {
         "build": "cross-env NODE_ENV=development webpack --progress --hide-modules && cross-env NODE_ENV=production webpack --progress --hide-modules"

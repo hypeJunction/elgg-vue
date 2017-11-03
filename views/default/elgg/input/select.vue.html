@@ -8,26 +8,29 @@
                         :id="id"
                         class="elgg-input-select"
                 >
-                    <option v-for="option in filteredOptions"
+                    <template v-for="(option, index) in filteredOptions">
+                        <option
+                            :key="index"
                             :value="option.value"
-                            :disabled="option.disabled"
                             :selected="option.selected"
-                    >
-                        {{ option.label }}
-                    </option>
+                            :disabled="option.disabled"
+                        >
+                            {{ option.label }}
+                        </option>
+                    </template>
                 </select>
             </slot>
             <elgg-icon
-                    v-if="leftIcon"
-                    :name="leftIcon"
-                    :size="size"
-                    position="left"
+                v-if="leftIcon"
+                :name="leftIcon"
+                :size="size"
+                position="left"
             ></elgg-icon>
             <elgg-icon
-                    v-if="rightIcon"
-                    :name="rightIcon"
-                    :size="size"
-                    position="right"
+                v-if="rightIcon"
+                :name="rightIcon"
+                :size="size"
+                position="right"
             ></elgg-icon>
         </div>
     </div>

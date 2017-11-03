@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Tether from 'tether'
-import Tooltip from 'tether-tooltip'
+import Tether from 'tether';
+import Tooltip from 'tether-tooltip';
+import VueEventBus from 'vue-event-bus';
 
-import VueCarousel from 'vue-carousel'
+import VueCarousel from 'vue-carousel';
 import AnimatedVue from 'animated-vue';
 import Sortable from 'sortablejs';
 
 Vue.use(Vuex);
 Vue.use(AnimatedVue);
 Vue.use(VueCarousel);
+Vue.use(VueEventBus);
 
 Vue.directive('sortable', {
     inserted: function (el, binding) {

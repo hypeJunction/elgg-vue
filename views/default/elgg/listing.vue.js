@@ -246,6 +246,9 @@ define(function (require) {
                     this.load();
                 },
                 deep: true
+            },
+            items: function() {
+                this.$bus.$emit('resize');
             }
         }
     });

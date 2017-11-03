@@ -57,6 +57,7 @@ define(function (require) {
                         self.loading = true;
                     }
                 }).then(function (response) {
+                    self.$bus.$emit('ajax-done', response);
                     if (response.status === 200) {
                         self.sections = response.payload.menu || {
                             default: [

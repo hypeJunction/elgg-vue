@@ -39,12 +39,14 @@ define(function (require) {
                     onOpen: function () {
                         self.$emit('open', self);
                         this.isOpen = true;
+                        self.resize();
                     },
                     onLoad: function () {
                         self.$emit('load', self);
                     },
                     onComplete: function () {
                         self.$emit('complete', self);
+                        self.resize();
                     },
                     onCleanup: function () {
                         self.$emit('cleanup', self);
@@ -64,10 +66,19 @@ define(function (require) {
             },
             hide: function () {
                 lightbox.close();
+            },
+            resize: function () {
+                this.$nextTick(function () {
+                    lightbox.resize();
+                });
             }
         },
         mounted: function () {
             this.isOpen = this.open;
+            var self = this;
+            this.$bus.$on('resize', function () {
+                self.resize();
+            });
         },
         watch: {
             open: function (value) {

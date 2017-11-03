@@ -49,6 +49,7 @@ define(function (require) {
             return {
                 selectedItems: this.selected,
                 allToggledOnPage: false,
+                sortData: this.sort
             }
         },
         computed: {
@@ -130,11 +131,11 @@ define(function (require) {
                 }
 
                 var direction = 'asc';
-                if (column.sort === this.sort.key) {
-                    direction = this.sort.direction === 'asc' ? 'desc' : 'asc';
+                if (column.sort === this.sortData.key) {
+                    direction = this.sortData.direction === 'asc' ? 'desc' : 'asc';
                 }
 
-                this.sort = {
+                this.sortData = {
                     key: column.sort,
                     direction: direction
                 };
@@ -146,7 +147,7 @@ define(function (require) {
                     return 'elgg-column-unsortable';
                 }
 
-                if (column.sort === this.sort.key) {
+                if (column.sort === this.sortData.key) {
                     return 'elgg-column-sorted';
                 } else {
                     return 'elgg-column-sortable';
@@ -156,8 +157,8 @@ define(function (require) {
                 if (!column.sort) {
                     return;
                 }
-                if (column.sort === this.sort.key) {
-                    return this.sort.direction === 'asc' ? 'sort-asc' : 'sort-desc';
+                if (column.sort === this.sortData.key) {
+                    return this.sortData.direction === 'asc' ? 'sort-asc' : 'sort-desc';
                 } else {
                     return 'sort';
                 }

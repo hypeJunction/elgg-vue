@@ -113,10 +113,10 @@ define(function() {
         },
         watch: {
             value: function (value) {
-                this.inputValue = value;
+                this.inputValue = typeof value !== 'undefined' ? value : null;
             },
             inputValue: function (value) {
-                if (typeof value !== 'undefined' && value !== null) {
+                if (typeof value !== 'undefined') {
                     this.$emit('input', value);
                 }
             }
