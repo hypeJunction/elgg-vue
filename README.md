@@ -83,9 +83,7 @@ There is currently no way to rely on global webpack configuration. You can see `
 
 ## Vue Application
 
-By default, the entire `body` of all HTML pages is wrapped in a vue container div, so you can just include your component tags anywhere in the views. This does not hold true, however, for views loaded via XHR (yet).
-
-To bootstrap a new app elsewhere, you can use the convenience `vue/app` view:
+To bootstrap a new app, use the convenience `vue/app` view:
 
 ```php
 echo elgg_view('vue/app', [
