@@ -8,6 +8,12 @@ define(function(require) {
     Vue.component('elgg-input-text', {
         template: template,
         extends: ElggInput,
+        props: {
+            type: {
+                type: String,
+                default: 'text'
+            }
+        }
     });
 
 });

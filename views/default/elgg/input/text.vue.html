@@ -2,7 +2,7 @@
     <div slot="control" class="control" :class="controlClasses">
         <slot name="input">
             <input v-model="inputValue"
-                   type="text"
+                   :type="type"
                    :required="required"
                    :name="name"
                    :id="id"

@@ -6,7 +6,7 @@ See `elgg-input` docs for a full list of props
 
 |Property      |Type          |Default       |Required      |Description                                                    |
 |--------------|--------------|--------------|--------------|---------------------------------------------------------------|
-|              |              |              |              |                                                               |
+|`type`        |String        |`text`        |no            |Type of the text input                                         |
 
 ## Events
 
