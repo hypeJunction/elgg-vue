@@ -36,6 +36,9 @@ define(function() {
             placeholder: {
                 type: String
             },
+            error: {
+                type: String
+            },
             leftIcon: {
                 type: String
             },
@@ -83,6 +86,9 @@ define(function() {
                 }
                 if (this.size) {
                     selectors.push('is-' + this.size);
+                }
+                if (this.error) {
+                    selectors.push('elgg-state-error');
                 }
                 return selectors;
             },

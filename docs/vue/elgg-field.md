@@ -8,6 +8,7 @@
 |`required`    |Boolean       |`false`       |no            |Is input element required. Used to render label and field classes|
 |`label`       |String        |``            |no            |Label text                                                       |
 |`help`        |String        |``            |no            |Help text                                                        |
+|`error`       |String        |``            |no            |Validate error text                                                        |
 
 ## Events
 

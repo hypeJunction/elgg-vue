@@ -15,7 +15,8 @@ These properties and events apply to all input components extending base input.
 |`controlClass`|String        |``            |no            |Additional classes of the control element                  |
 |`fieldClass`  |String        |``            |no            |Additional classes of the field element                    |
 |`label`       |String        |``            |no            |Label text                                                 |
-|`help `       |String        |``            |no            |Help text                                                  |
+|`help`        |String        |``            |no            |Help text                                                  |
+|`error`       |String        |``            |no            |Validation error text                                                  |
 |`placeholder` |String        |``            |no            |Placeholder text                                           |
 |`leftIcon`    |String        |``            |no            |Name of the left icon                                      |
 |`rightIcon`   |String        |``            |no            |Name of the right icon                                     |
