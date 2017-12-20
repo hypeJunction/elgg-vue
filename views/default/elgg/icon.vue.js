@@ -34,6 +34,9 @@ define(function(require) {
                 if (this.color) {
                     selectors.push('has-text-' + this.color);
                 }
+                if (this.position) {
+                    selectors.push('is-' + this.position);
+                }
                 return selectors;
             },
             iconClass: function() {
