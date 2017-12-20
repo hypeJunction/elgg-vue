@@ -1,16 +1,4 @@
-<elgg-field :class="fieldClasses" :error="error">
-    <label slot="label"
-           v-if="label"
-           :for="id"
-           class="label elgg-field-label"
-    >
-        {{ label }}
-        <span v-if="required"
-              :title="echo('field:required')"
-              class="elgg-required-indicator"
-        >*</span>
-    </label>
-
+<elgg-field :class="fieldClasses" :id="id" :required="required" :label="label" :help="help" :error="error">
     <div slot="control" class="control" :class="controlClasses">
         <slot name="input">
             <component
