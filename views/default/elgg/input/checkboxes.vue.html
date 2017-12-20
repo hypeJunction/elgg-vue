@@ -11,10 +11,13 @@
                                :value="option.value"
                                :disabled="option.disabled"
                         />
-                        <span class="checkbox-box">
-                            <elgg-icon v-if="option.selected" name="check" color="primary" />
-                        </span>
-                        <span class="checkbox-label" v-html="option.label"></span>
+                        <slot v-if="option.slot" :name="option.slot"></slot>
+                        <template v-if="!option.slot">
+                            <span class="checkbox-box">
+                                <elgg-icon v-if="option.selected" name="check" color="primary"/>
+                            </span>
+                            <span class="checkbox-label" v-html="option.label"></span>
+                        </template>
                     </label>
                 </template>
             </slot>

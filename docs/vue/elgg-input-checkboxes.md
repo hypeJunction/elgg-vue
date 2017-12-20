@@ -8,6 +8,8 @@ See `elgg-input` docs for a full list of props
 |--------------|--------------|--------------|--------------|---------------------------------------------------------------|
 |`options`     |String        |--            |yes           |An array of select options ``{value: 'value', label: 'label' }``   |
 
+`options` can contain names of slots instead of labels, in which case a slot will be rendered instead of the label.
+
 ## Events
 
 |Event                         |Description                                                          |
