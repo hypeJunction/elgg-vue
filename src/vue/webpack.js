@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import Tether from 'tether';
 import Tooltip from 'tether-tooltip';
 import VueEventBus from 'vue-event-bus';
-
+import VeeValidate from 'vee-validate';
 import VueCarousel from 'vue-carousel';
 import AnimatedVue from 'animated-vue';
 import Sortable from 'sortablejs';
@@ -12,6 +12,7 @@ Vue.use(Vuex);
 Vue.use(AnimatedVue);
 Vue.use(VueCarousel);
 Vue.use(VueEventBus);
+Vue.use(VeeValidate);
 
 Vue.directive('sortable', {
     inserted: function (el, binding) {

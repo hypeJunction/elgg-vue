@@ -30,6 +30,7 @@ See `/docs/` directory for a list of components and usage examples.
 The plugin comes with some useful Vue components precompiled with webpack.
 
 * ***Multiselect*** https://monterail.github.io/vue-multiselect
+* ***VeeValidate*** https://github.com/baianat/vee-validate
 
 
 ### Global Components

@@ -9,6 +9,7 @@
         "sortablejs": "^1.6.1",
         "tether": "^1.4.0",
         "tether-tooltip": "^1.2.0",
+        "vee-validate": "^2.0.0-rc.27",
         "vue": "^2.5.2",
         "vue-carousel": "^0.6.5",
         "vue-multiselect": "^2.0.2",
