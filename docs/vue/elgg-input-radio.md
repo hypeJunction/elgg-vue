@@ -1,4 +1,4 @@
-# `<elgg-input-checkboxes>`
+# `<elgg-input-radio>`
 
 See `elgg-input` docs for a full list of props
 
@@ -25,7 +25,7 @@ See `elgg-input` docs for a full list of props
 ## Example
 
 ```html
-<elgg-input-checkboxes
+<elgg-input-radio
     v-model="parent.value"
     @input="doSomething"
     :options="[
@@ -40,7 +40,7 @@ See `elgg-input` docs for a full list of props
     ]"
 />
 
-<elgg-input-checkboxes
+<elgg-input-radio
 	:options="[
            {
               value: 'option1',
@@ -54,5 +54,5 @@ See `elgg-input` docs for a full list of props
 >
 	<img slot="slot1" src="">
 	<img slot="slot2" src="">
-</elgg-input-checkboxes>
+</elgg-input-radio>
 ```
