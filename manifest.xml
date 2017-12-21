@@ -28,7 +28,7 @@
 
 	<requires>
 		<type>plugin</type>
-		<name>elgg-scss</name>
+		<name>elgg-moment</name>
 	</requires>
 
 </plugin_manifest>
