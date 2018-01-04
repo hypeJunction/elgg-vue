@@ -6,7 +6,7 @@ define(function (require) {
     var ElggInput = require('elgg/input.vue');
 
     var template = require('text!elgg/input/date.vue.html');
-    require('moment');
+    var moment = require('moment');
 
     Vue.component('elgg-input-date', {
         template: template,
@@ -37,6 +37,18 @@ define(function (require) {
             var options = this.options;
             options.onSelect = this.setInputValue;
             $(this.$refs.datepicker).datepicker(options);
+
+            if (this.value) {
+                var date = this.value;
+                console.log(date);
+                if (typeof date === 'number' && this.isTimestamp) {
+                    date = moment.unix(this.value).toDate();
+                }
+
+                console.log(date);
+
+                $(this.$refs.datepicker).datepicker('setDate', date);
+            }
         }
     });
 
